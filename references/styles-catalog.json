@@ -1,0 +1,698 @@
+{
+  "source": "https://github.com/VoltAgent/awesome-design-md/tree/main/design-md",
+  "rawBase": "https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main/design-md",
+  "getdesignBase": "https://getdesign.md",
+  "updated": "2026-07-11",
+  "aliases": {
+    "tsla": "tesla",
+    "tesla": "tesla",
+    "openai": "claude",
+    "chatgpt": "claude",
+    "anthropic": "claude",
+    "linear": "linear.app",
+    "mistral": "mistral.ai",
+    "together": "together.ai",
+    "xai": "x.ai",
+    "opencode": "opencode.ai",
+    "runway": "runwayml",
+    "cal.com": "cal",
+    "calcom": "cal",
+    "nintendo": "nintendo-2001",
+    "dell": "dell-1996",
+    "bmw m": "bmw-m",
+    "bmwm": "bmw-m",
+    "the verge": "theverge",
+    "verge": "theverge"
+  },
+  "notes": {
+    "openai": "awesome-design-md 暂无 OpenAI 官方条目；自动映射到 claude（暖色编辑风格）。也可手动指定 x.ai / vercel / cursor。"
+  },
+  "styles": [
+    {
+      "id": "airbnb",
+      "name": "Airbnb",
+      "category": "e-commerce",
+      "vibe": "warm coral travel marketplace, photo-driven rounded UI",
+      "tags": ["travel", "marketplace", "warm", "coral", "photo", "friendly", "hospitality", "booking"],
+      "palette": ["#FF385C", "white", "warm neutrals"],
+      "bestFor": ["旅游预订", "生活方式", "C2C 市场"]
+    },
+    {
+      "id": "airtable",
+      "name": "Airtable",
+      "category": "productivity",
+      "vibe": "colorful friendly structured data aesthetic",
+      "tags": ["saas", "data", "colorful", "friendly", "spreadsheet", "collaboration", "no-code"],
+      "palette": ["colorful accents", "white"],
+      "bestFor": ["协作工具", "低代码", "数据产品"]
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "category": "consumer-tech",
+      "vibe": "premium white space, SF Pro, cinematic product photography",
+      "tags": ["premium", "minimal", "white-space", "product", "hardware", "cinematic", "luxury-tech"],
+      "palette": ["#000", "#fff", "product photography"],
+      "bestFor": ["硬件产品", "高端消费电子", "品牌旗舰页"]
+    },
+    {
+      "id": "binance",
+      "name": "Binance",
+      "category": "fintech-crypto",
+      "vibe": "bold Binance Yellow on near-black trading floor urgency",
+      "tags": ["crypto", "trading", "exchange", "yellow", "dark", "finance", "web3", "defi", "exchange"],
+      "palette": ["#FCD535", "#0B0E11", "trading green/red"],
+      "bestFor": ["加密交易", "金融仪表盘", "Web3 产品"]
+    },
+    {
+      "id": "bmw",
+      "name": "BMW",
+      "category": "automotive",
+      "vibe": "dark premium German engineering precision",
+      "tags": ["automotive", "luxury", "dark", "premium", "german", "precision"],
+      "palette": ["dark", "blue accents"],
+      "bestFor": ["汽车品牌", "高端工业"]
+    },
+    {
+      "id": "bmw-m",
+      "name": "BMW M",
+      "category": "automotive",
+      "vibe": "motorsport contrast, M color accents, performance-driven",
+      "tags": ["automotive", "performance", "motorsport", "aggressive", "contrast"],
+      "palette": ["M colors", "dark"],
+      "bestFor": ["性能车", "运动品牌"]
+    },
+    {
+      "id": "bugatti",
+      "name": "Bugatti",
+      "category": "automotive",
+      "vibe": "cinema-black monochrome austerity, monumental display type",
+      "tags": ["hypercar", "luxury", "black", "monumental", "austere", "ultra-premium"],
+      "palette": ["black", "white"],
+      "bestFor": ["超豪华", "限量产品"]
+    },
+    {
+      "id": "cal",
+      "name": "Cal.com",
+      "category": "productivity",
+      "vibe": "clean neutral developer-oriented scheduling simplicity",
+      "tags": ["scheduling", "calendar", "minimal", "developer", "neutral", "open-source"],
+      "palette": ["neutral grays", "black"],
+      "bestFor": ["预约工具", "开发者 SaaS"]
+    },
+    {
+      "id": "claude",
+      "name": "Claude",
+      "category": "ai-llm",
+      "vibe": "warm terracotta accent, clean editorial AI assistant layout",
+      "tags": ["ai", "llm", "assistant", "warm", "terracotta", "editorial", "chat", "anthropic", "openai"],
+      "palette": ["terracotta", "warm neutrals", "cream"],
+      "bestFor": ["AI 助手", "聊天产品", "温和科技感"]
+    },
+    {
+      "id": "clay",
+      "name": "Clay",
+      "category": "design-creative",
+      "vibe": "organic shapes soft gradients art-directed agency",
+      "tags": ["agency", "creative", "organic", "gradient", "art-directed", "soft"],
+      "palette": ["soft gradients", "organic"],
+      "bestFor": ["创意机构", "品牌工作室"]
+    },
+    {
+      "id": "clickhouse",
+      "name": "ClickHouse",
+      "category": "backend-devops",
+      "vibe": "yellow-accented technical documentation style",
+      "tags": ["database", "analytics", "technical", "docs", "yellow", "data"],
+      "palette": ["yellow", "technical"],
+      "bestFor": ["数据基础设施", "技术文档"]
+    },
+    {
+      "id": "cohere",
+      "name": "Cohere",
+      "category": "ai-llm",
+      "vibe": "vibrant gradients data-rich enterprise AI dashboard",
+      "tags": ["ai", "enterprise", "gradient", "dashboard", "data-rich"],
+      "palette": ["vibrant gradients"],
+      "bestFor": ["企业 AI", "数据仪表盘"]
+    },
+    {
+      "id": "coinbase",
+      "name": "Coinbase",
+      "category": "fintech-crypto",
+      "vibe": "clean blue institutional trust crypto identity",
+      "tags": ["crypto", "blue", "trust", "institutional", "finance", "clean"],
+      "palette": ["Coinbase Blue", "white"],
+      "bestFor": ["合规加密", "信任感金融"]
+    },
+    {
+      "id": "composio",
+      "name": "Composio",
+      "category": "backend-devops",
+      "vibe": "modern dark with colorful integration icons",
+      "tags": ["integration", "tools", "dark", "colorful", "api", "agents"],
+      "palette": ["dark", "multi-color icons"],
+      "bestFor": ["集成平台", "Agent 工具"]
+    },
+    {
+      "id": "cursor",
+      "name": "Cursor",
+      "category": "developer-tools",
+      "vibe": "sleek dark AI-first code editor with gradient accents",
+      "tags": ["ide", "ai", "coding", "dark", "gradient", "developer", "editor"],
+      "palette": ["dark", "gradient accents"],
+      "bestFor": ["开发者工具", "AI IDE", "代码产品"]
+    },
+    {
+      "id": "dell-1996",
+      "name": "Dell (1996)",
+      "category": "retro",
+      "vibe": "1990s catalog enterprise web, chunky Helvetica, GIF stickers",
+      "tags": ["retro", "90s", "nostalgia", "vintage", "catalog", "enterprise-web"],
+      "palette": ["flat color blocks", "black frame"],
+      "bestFor": ["复古网页", "怀旧营销"]
+    },
+    {
+      "id": "elevenlabs",
+      "name": "ElevenLabs",
+      "category": "ai-llm",
+      "vibe": "dark cinematic UI, audio-waveform aesthetics",
+      "tags": ["ai", "voice", "audio", "cinematic", "dark", "waveform"],
+      "palette": ["dark cinematic"],
+      "bestFor": ["语音 AI", "音频产品"]
+    },
+    {
+      "id": "expo",
+      "name": "Expo",
+      "category": "developer-tools",
+      "vibe": "dark theme tight letter-spacing code-centric React Native",
+      "tags": ["react-native", "mobile", "developer", "dark", "code"],
+      "palette": ["dark"],
+      "bestFor": ["移动开发", "RN 平台"]
+    },
+    {
+      "id": "ferrari",
+      "name": "Ferrari",
+      "category": "automotive",
+      "vibe": "chiaroscuro black-white editorial, Ferrari Red sparseness",
+      "tags": ["automotive", "luxury", "red", "editorial", "dramatic"],
+      "palette": ["Ferrari Red", "black", "white"],
+      "bestFor": ["豪华汽车", "戏剧性品牌"]
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "category": "design-creative",
+      "vibe": "monochrome chrome + oversized pastel color-block sections, pill CTAs",
+      "tags": ["design", "tool", "pastel", "playful", "professional", "collaborative", "creative", "ui"],
+      "palette": ["black", "white", "lime", "lilac", "cream", "mint"],
+      "bestFor": ["设计工具", "创意协作", "活泼 SaaS"]
+    },
+    {
+      "id": "framer",
+      "name": "Framer",
+      "category": "design-creative",
+      "vibe": "bold black and blue, motion-first design-forward",
+      "tags": ["website-builder", "motion", "bold", "blue", "design", "animation"],
+      "palette": ["black", "blue"],
+      "bestFor": ["建站工具", "动效优先产品"]
+    },
+    {
+      "id": "hashicorp",
+      "name": "HashiCorp",
+      "category": "backend-devops",
+      "vibe": "enterprise-clean black and white infrastructure",
+      "tags": ["infrastructure", "enterprise", "devops", "black-white", "clean"],
+      "palette": ["black", "white"],
+      "bestFor": ["企业基础设施", "DevOps"]
+    },
+    {
+      "id": "hp",
+      "name": "HP",
+      "category": "consumer-tech",
+      "vibe": "pure white canvas, HP Electric Blue CTA, geometric type",
+      "tags": ["pc", "hardware", "blue", "white", "enterprise-consumer"],
+      "palette": ["white", "HP Blue"],
+      "bestFor": ["PC 品牌", "硬件零售"]
+    },
+    {
+      "id": "ibm",
+      "name": "IBM",
+      "category": "consumer-tech",
+      "vibe": "Carbon design system structured blue enterprise",
+      "tags": ["enterprise", "carbon", "blue", "structured", "b2b"],
+      "palette": ["IBM Blue", "structured"],
+      "bestFor": ["企业级 B2B", "正式科技"]
+    },
+    {
+      "id": "intercom",
+      "name": "Intercom",
+      "category": "productivity",
+      "vibe": "friendly blue conversational messaging UI",
+      "tags": ["messaging", "customer", "friendly", "blue", "chat", "support"],
+      "palette": ["friendly blue"],
+      "bestFor": ["客服", "消息产品"]
+    },
+    {
+      "id": "kraken",
+      "name": "Kraken",
+      "category": "fintech-crypto",
+      "vibe": "purple-accented dark data-dense trading dashboards",
+      "tags": ["crypto", "trading", "purple", "dark", "dashboard", "data"],
+      "palette": ["purple", "dark"],
+      "bestFor": ["加密交易", "数据密集 UI"]
+    },
+    {
+      "id": "lamborghini",
+      "name": "Lamborghini",
+      "category": "automotive",
+      "vibe": "true black cathedral, gold accent, Neo-Grotesk",
+      "tags": ["automotive", "luxury", "black", "gold", "dramatic"],
+      "palette": ["black", "gold"],
+      "bestFor": ["超跑", "奢华戏剧"]
+    },
+    {
+      "id": "linear.app",
+      "name": "Linear",
+      "category": "productivity",
+      "vibe": "ultra-minimal precise purple accent for engineers",
+      "tags": ["project-management", "minimal", "purple", "precise", "engineering", "issue-tracker"],
+      "palette": ["dark/light", "purple accent"],
+      "bestFor": ["工程工具", "极简 SaaS", "项目管理"]
+    },
+    {
+      "id": "lovable",
+      "name": "Lovable",
+      "category": "developer-tools",
+      "vibe": "playful gradients friendly AI full-stack builder",
+      "tags": ["ai", "builder", "playful", "gradient", "friendly", "fullstack"],
+      "palette": ["playful gradients"],
+      "bestFor": ["AI 建站", "友好开发工具"]
+    },
+    {
+      "id": "mastercard",
+      "name": "Mastercard",
+      "category": "fintech-crypto",
+      "vibe": "warm cream canvas, orbital pills, editorial warmth",
+      "tags": ["payments", "warm", "cream", "editorial", "global", "finance"],
+      "palette": ["cream", "Mastercard reds/oranges"],
+      "bestFor": ["支付品牌", "温暖金融"]
+    },
+    {
+      "id": "meta",
+      "name": "Meta",
+      "category": "e-commerce",
+      "vibe": "photography-first binary light/dark Meta Blue CTAs",
+      "tags": ["retail", "photo", "blue", "tech", "store"],
+      "palette": ["Meta Blue", "photo"],
+      "bestFor": ["科技零售", "产品图优先"]
+    },
+    {
+      "id": "minimax",
+      "name": "Minimax",
+      "category": "ai-llm",
+      "vibe": "bold dark interface with neon accents",
+      "tags": ["ai", "dark", "neon", "bold", "model-provider"],
+      "palette": ["dark", "neon"],
+      "bestFor": ["AI 模型平台", "霓虹暗色"]
+    },
+    {
+      "id": "mintlify",
+      "name": "Mintlify",
+      "category": "productivity",
+      "vibe": "clean green-accented reading-optimized documentation",
+      "tags": ["docs", "documentation", "green", "clean", "reading"],
+      "palette": ["green accent", "clean"],
+      "bestFor": ["文档站", "知识库"]
+    },
+    {
+      "id": "miro",
+      "name": "Miro",
+      "category": "design-creative",
+      "vibe": "bright yellow accent infinite canvas collaboration",
+      "tags": ["whiteboard", "collaboration", "yellow", "canvas", "visual"],
+      "palette": ["bright yellow"],
+      "bestFor": ["白板协作", "视觉工作坊"]
+    },
+    {
+      "id": "mistral.ai",
+      "name": "Mistral AI",
+      "category": "ai-llm",
+      "vibe": "French-engineered minimalism purple-toned open LLM",
+      "tags": ["ai", "llm", "purple", "minimal", "open-source", "european"],
+      "palette": ["purple tones"],
+      "bestFor": ["开源 LLM", "欧式极简 AI"]
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "category": "backend-devops",
+      "vibe": "green leaf branding developer documentation focus",
+      "tags": ["database", "green", "docs", "developer"],
+      "palette": ["MongoDB Green"],
+      "bestFor": ["数据库", "开发者文档"]
+    },
+    {
+      "id": "nike",
+      "name": "Nike",
+      "category": "e-commerce",
+      "vibe": "monochrome massive uppercase Futura full-bleed photography",
+      "tags": ["athletic", "sport", "monochrome", "uppercase", "photo", "bold"],
+      "palette": ["black", "white"],
+      "bestFor": ["运动零售", "大胆品牌"]
+    },
+    {
+      "id": "nintendo-2001",
+      "name": "Nintendo.com (2001)",
+      "category": "retro",
+      "vibe": "Y2K console chrome beveled metal amber glow",
+      "tags": ["retro", "y2k", "gaming", "chrome", "nostalgia", "2001"],
+      "palette": ["periwinkle metal", "amber"],
+      "bestFor": ["游戏怀旧", "Y2K 美学"]
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "category": "productivity",
+      "vibe": "warm minimalism serif headings soft workspace surfaces",
+      "tags": ["workspace", "notes", "warm", "minimal", "serif", "productivity"],
+      "palette": ["warm neutrals", "soft"],
+      "bestFor": ["笔记", "工作区", "知识管理"]
+    },
+    {
+      "id": "nvidia",
+      "name": "NVIDIA",
+      "category": "consumer-tech",
+      "vibe": "green-black energy technical GPU power",
+      "tags": ["gpu", "ai", "green", "black", "technical", "compute"],
+      "palette": ["NVIDIA Green", "black"],
+      "bestFor": ["GPU/AI 硬件", "算力品牌"]
+    },
+    {
+      "id": "ollama",
+      "name": "Ollama",
+      "category": "ai-llm",
+      "vibe": "terminal-first monochrome local LLM simplicity",
+      "tags": ["ai", "local", "terminal", "monochrome", "cli", "developer"],
+      "palette": ["monochrome"],
+      "bestFor": ["本地 AI", "CLI 极简"]
+    },
+    {
+      "id": "opencode.ai",
+      "name": "OpenCode AI",
+      "category": "ai-llm",
+      "vibe": "developer-centric dark AI coding platform",
+      "tags": ["ai", "coding", "dark", "developer"],
+      "palette": ["dark"],
+      "bestFor": ["AI 编程平台"]
+    },
+    {
+      "id": "pinterest",
+      "name": "Pinterest",
+      "category": "media",
+      "vibe": "red accent masonry grid image-first discovery",
+      "tags": ["visual", "masonry", "red", "image", "discovery", "social"],
+      "palette": ["Pinterest Red"],
+      "bestFor": ["图片社区", "灵感发现"]
+    },
+    {
+      "id": "playstation",
+      "name": "PlayStation",
+      "category": "media",
+      "vibe": "gaming retail three-surface channel cyan hover-scale",
+      "tags": ["gaming", "console", "cyan", "retail", "interactive"],
+      "palette": ["cyan", "dark surfaces"],
+      "bestFor": ["游戏零售", "主机品牌"]
+    },
+    {
+      "id": "posthog",
+      "name": "PostHog",
+      "category": "backend-devops",
+      "vibe": "playful hedgehog developer analytics dark UI",
+      "tags": ["analytics", "developer", "playful", "dark", "product"],
+      "palette": ["dark", "playful accents"],
+      "bestFor": ["产品分析", "开发者友好数据"]
+    },
+    {
+      "id": "raycast",
+      "name": "Raycast",
+      "category": "developer-tools",
+      "vibe": "sleek dark chrome vibrant gradient productivity launcher",
+      "tags": ["launcher", "productivity", "dark", "gradient", "mac", "tools"],
+      "palette": ["dark", "vibrant gradient"],
+      "bestFor": ["效率工具", "桌面启动器"]
+    },
+    {
+      "id": "renault",
+      "name": "Renault",
+      "category": "automotive",
+      "vibe": "vivid aurora gradients zero-radius buttons French auto",
+      "tags": ["automotive", "gradient", "aurora", "vivid", "french"],
+      "palette": ["aurora gradients"],
+      "bestFor": ["汽车品牌", "鲜艳渐变"]
+    },
+    {
+      "id": "replicate",
+      "name": "Replicate",
+      "category": "ai-llm",
+      "vibe": "clean white canvas code-forward ML API",
+      "tags": ["ml", "api", "white", "code", "models", "clean"],
+      "palette": ["white", "clean"],
+      "bestFor": ["ML API", "模型托管"]
+    },
+    {
+      "id": "resend",
+      "name": "Resend",
+      "category": "productivity",
+      "vibe": "minimal dark theme monospace accents email API",
+      "tags": ["email", "api", "dark", "minimal", "mono", "developer"],
+      "palette": ["dark", "mono accents"],
+      "bestFor": ["邮件 API", "开发者极简"]
+    },
+    {
+      "id": "revolut",
+      "name": "Revolut",
+      "category": "fintech-crypto",
+      "vibe": "sleek dark gradient cards fintech precision",
+      "tags": ["banking", "fintech", "dark", "gradient", "cards", "mobile-first"],
+      "palette": ["dark", "gradient cards"],
+      "bestFor": ["数字银行", "金融 App"]
+    },
+    {
+      "id": "runwayml",
+      "name": "Runway",
+      "category": "ai-llm",
+      "vibe": "editorial film-festival cinematic dark creative AI",
+      "tags": ["ai", "video", "cinematic", "creative", "film", "dark"],
+      "palette": ["cinematic dark", "paper white bands"],
+      "bestFor": ["AI 视频", "创意工具"]
+    },
+    {
+      "id": "sanity",
+      "name": "Sanity",
+      "category": "backend-devops",
+      "vibe": "dark-first editorial marketing 112px display coral CTA",
+      "tags": ["cms", "content", "dark", "editorial", "coral"],
+      "palette": ["dark", "coral-red CTA"],
+      "bestFor": ["Headless CMS", "内容平台"]
+    },
+    {
+      "id": "sentry",
+      "name": "Sentry",
+      "category": "backend-devops",
+      "vibe": "dark dashboard data-dense pink-purple monitoring",
+      "tags": ["monitoring", "errors", "dark", "dashboard", "purple", "dev"],
+      "palette": ["dark", "pink-purple"],
+      "bestFor": ["监控", "错误追踪"]
+    },
+    {
+      "id": "shopify",
+      "name": "Shopify",
+      "category": "e-commerce",
+      "vibe": "dark-first cinematic neon green ultra-light display type",
+      "tags": ["ecommerce", "commerce", "green", "dark", "cinematic"],
+      "palette": ["neon green", "dark"],
+      "bestFor": ["电商平台", "商家工具"]
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "category": "productivity",
+      "vibe": "colorful workplace collaboration friendly product UI",
+      "tags": ["chat", "workplace", "collaboration", "colorful", "friendly"],
+      "palette": ["Slack multicolor"],
+      "bestFor": ["团队协作", "工作场所"]
+    },
+    {
+      "id": "spacex",
+      "name": "SpaceX",
+      "category": "media",
+      "vibe": "stark black and white full-bleed futuristic imagery",
+      "tags": ["space", "black-white", "futuristic", "full-bleed", "engineering"],
+      "palette": ["black", "white"],
+      "bestFor": ["航天科技", "未来工程"]
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "category": "media",
+      "vibe": "vibrant green on dark bold type album-art-driven",
+      "tags": ["music", "streaming", "green", "dark", "media", "bold"],
+      "palette": ["Spotify Green", "dark"],
+      "bestFor": ["音乐流媒体", "媒体消费"]
+    },
+    {
+      "id": "starbucks",
+      "name": "Starbucks",
+      "category": "e-commerce",
+      "vibe": "earth-green system warm cream canvas retail flagship",
+      "tags": ["coffee", "retail", "green", "warm", "cream", "hospitality"],
+      "palette": ["earth greens", "cream"],
+      "bestFor": ["餐饮零售", "生活方式品牌"]
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "category": "fintech-crypto",
+      "vibe": "signature purple gradients weight-300 elegance payments",
+      "tags": ["payments", "purple", "gradient", "elegant", "fintech", "developer", "saas"],
+      "palette": ["Stripe purple gradients"],
+      "bestFor": ["支付基础设施", "优雅 SaaS", "开发者金融"]
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "category": "backend-devops",
+      "vibe": "dark emerald theme code-first open-source Firebase",
+      "tags": ["backend", "database", "emerald", "dark", "open-source", "baas"],
+      "palette": ["emerald", "dark"],
+      "bestFor": ["BaaS", "开源后端"]
+    },
+    {
+      "id": "superhuman",
+      "name": "Superhuman",
+      "category": "developer-tools",
+      "vibe": "premium dark keyboard-first purple glow email",
+      "tags": ["email", "premium", "dark", "purple", "keyboard", "productivity"],
+      "palette": ["dark", "purple glow"],
+      "bestFor": ["高端效率", "键盘优先产品"]
+    },
+    {
+      "id": "tesla",
+      "name": "Tesla",
+      "category": "automotive",
+      "vibe": "radical subtraction cinematic full-viewport photography Electric Blue CTA",
+      "tags": ["ev", "automotive", "minimal", "photography", "white", "blue", "product", "gallery", "tsla"],
+      "palette": ["#3E6AE1", "#FFFFFF", "#171A20"],
+      "bestFor": ["产品画廊", "极简硬件", "全屏摄影站"]
+    },
+    {
+      "id": "theverge",
+      "name": "The Verge",
+      "category": "media",
+      "vibe": "acid-mint ultraviolet accents Manuka display editorial",
+      "tags": ["media", "editorial", "tech-news", "mint", "ultraviolet", "magazine"],
+      "palette": ["acid-mint", "ultraviolet"],
+      "bestFor": ["科技媒体", "杂志编辑"]
+    },
+    {
+      "id": "together.ai",
+      "name": "Together AI",
+      "category": "ai-llm",
+      "vibe": "technical blueprint-style open-source AI infrastructure",
+      "tags": ["ai", "infrastructure", "technical", "blueprint", "open-source"],
+      "palette": ["technical blueprint"],
+      "bestFor": ["AI 基础设施"]
+    },
+    {
+      "id": "uber",
+      "name": "Uber",
+      "category": "media",
+      "vibe": "bold black and white tight type urban energy",
+      "tags": ["mobility", "black-white", "urban", "bold", "tight-type"],
+      "palette": ["black", "white"],
+      "bestFor": ["出行平台", "城市服务"]
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "category": "developer-tools",
+      "vibe": "black and white precision Geist font frontend platform",
+      "tags": ["frontend", "deploy", "black-white", "geist", "developer", "minimal", "nextjs"],
+      "palette": ["black", "white"],
+      "bestFor": ["前端平台", "开发者极简", "部署产品"]
+    },
+    {
+      "id": "vodafone",
+      "name": "Vodafone",
+      "category": "media",
+      "vibe": "monumental uppercase display Vodafone Red chapter bands",
+      "tags": ["telecom", "red", "monumental", "uppercase", "brand"],
+      "palette": ["Vodafone Red"],
+      "bestFor": ["电信品牌", "大字报式"]
+    },
+    {
+      "id": "voltagent",
+      "name": "VoltAgent",
+      "category": "ai-llm",
+      "vibe": "void-black canvas emerald accent terminal-native agents",
+      "tags": ["ai", "agents", "terminal", "emerald", "black", "framework"],
+      "palette": ["void black", "emerald"],
+      "bestFor": ["Agent 框架", "终端原生 AI"]
+    },
+    {
+      "id": "warp",
+      "name": "Warp",
+      "category": "developer-tools",
+      "vibe": "dark IDE-like terminal block-based command UI",
+      "tags": ["terminal", "dark", "ide", "developer", "blocks"],
+      "palette": ["dark IDE"],
+      "bestFor": ["现代终端", "开发者 UI"]
+    },
+    {
+      "id": "webflow",
+      "name": "Webflow",
+      "category": "design-creative",
+      "vibe": "blue-accented polished marketing site visual builder",
+      "tags": ["website-builder", "blue", "polished", "marketing", "visual"],
+      "palette": ["blue accent"],
+      "bestFor": ["可视化建站", "营销站"]
+    },
+    {
+      "id": "wired",
+      "name": "WIRED",
+      "category": "media",
+      "vibe": "paper-white broadsheet density custom serif ink-blue links",
+      "tags": ["magazine", "editorial", "serif", "paper", "tech-media"],
+      "palette": ["paper white", "ink-blue"],
+      "bestFor": ["杂志媒体", "长文编辑"]
+    },
+    {
+      "id": "wise",
+      "name": "Wise",
+      "category": "fintech-crypto",
+      "vibe": "bright green accent friendly clear money transfer",
+      "tags": ["fintech", "transfer", "green", "friendly", "clear", "international"],
+      "palette": ["Wise Green"],
+      "bestFor": ["跨境支付", "友好金融"]
+    },
+    {
+      "id": "x.ai",
+      "name": "xAI",
+      "category": "ai-llm",
+      "vibe": "stark monochrome futuristic minimalism Elon AI lab",
+      "tags": ["ai", "monochrome", "futuristic", "minimal", "stark", "grok"],
+      "palette": ["black", "white"],
+      "bestFor": ["前沿 AI 实验室", "极简未来"]
+    },
+    {
+      "id": "zapier",
+      "name": "Zapier",
+      "category": "productivity",
+      "vibe": "warm orange friendly illustration-driven automation",
+      "tags": ["automation", "orange", "friendly", "illustration", "no-code", "integration"],
+      "palette": ["warm orange"],
+      "bestFor": ["自动化", "集成平台", "友好插画"]
+    }
+  ]
+}

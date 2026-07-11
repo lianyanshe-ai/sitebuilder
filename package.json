@@ -1,0 +1,41 @@
+{
+  "name": "sitebuilder",
+  "version": "1.0.0",
+  "description": "Agent Skill: one-click deploy local static sites to Cloudflare Drop (no API token).",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "agent-skills",
+    "skills.sh",
+    "cloudflare",
+    "cloudflare-drop",
+    "static-site",
+    "deploy",
+    "preview"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lianyanshe-ai/sitebuilder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lianyanshe-ai/sitebuilder/issues"
+  },
+  "homepage": "https://github.com/lianyanshe-ai/sitebuilder#readme",
+  "files": [
+    "SKILL.md",
+    "scripts/",
+    "references/",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "deploy": "node scripts/deploy.mjs",
+    "package": "node scripts/package-static.mjs",
+    "match-style": "node scripts/match-style.mjs",
+    "fetch-style": "node scripts/fetch-style.mjs",
+    "check": "node --check scripts/deploy.mjs && node --check scripts/drop-api.mjs && node --check scripts/package-static.mjs && node --check scripts/match-style.mjs && node --check scripts/fetch-style.mjs"
+  }
+}
