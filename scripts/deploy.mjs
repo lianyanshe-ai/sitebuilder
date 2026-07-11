@@ -28,6 +28,7 @@ import {
   resolveDeployTarget,
   analyzeBuildDir,
   createZip,
+  DROP_CONSTRAINTS,
 } from "./package-static.mjs";
 import { deployViaDropApi } from "./drop-api.mjs";
 
@@ -527,15 +528,18 @@ async function main() {
     stagedFrom: target.stagedFrom || null,
     fileCount: analysis.fileCount,
     totalSizeMB: analysis.totalSizeMB,
+    maxFileMB: analysis.maxFileMB,
+    maxFilePath: analysis.maxFilePath,
+    hasIndex: analysis.hasIndex,
+    withinDropLimits: analysis.withinDropLimits,
     warnings: analysis.warnings,
     name,
     ...result,
     constraints: {
-      staticOnly: true,
+      ...DROP_CONSTRAINTS,
       allowed: "HTML, CSS, JavaScript, images, fonts",
       unclaimedTtl: "~1 hour (60 minutes)",
       claimForPermanent: true,
-      accountRequiredForTempPreview: false,
       inputScenarios: [
         "html-file: single .html",
         "static-folder: folder with index.html / assets",
@@ -558,7 +562,19 @@ async function main() {
     if (result.scenario) console.log(`Scenario:   ${result.scenario}`);
     if (result.framework) console.log(`Framework:  ${result.framework}`);
     console.log(`Method:     ${result.method}`);
-    console.log(`Build:      ${result.buildDir} (${result.fileCount} files, ${result.totalSizeMB} MB)`);
+    console.log(
+      `Build:      ${result.buildDir} (${result.fileCount} files <2000, ${result.totalSizeMB} MB <100MB)`
+    );
+    if (result.maxFilePath != null) {
+      console.log(
+        `Largest:    ${result.maxFilePath} (${result.maxFileMB} MB ≤25MB)`
+      );
+    }
+    console.log(
+      `index.html: ${result.hasIndex ? "yes" : "NO"} · Drop limits: ${
+        result.withinDropLimits ? "OK" : "FAIL"
+      }`
+    );
     if (result.previewUrl) console.log(`Preview:    ${result.previewUrl}`);
     if (result.claimUrl) console.log(`Claim:      ${result.claimUrl}`);
     if (result.zipPath) console.log(`Zip:        ${result.zipPath}`);

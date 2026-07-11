@@ -94,8 +94,29 @@ const CANDIDATE_DIRS = [
   "www/dist",
 ];
 
-const MAX_TOTAL = 100 * 1024 * 1024; // Drop limit ~100MB
-const MAX_FILES = 2000;
+/**
+ * Cloudflare Drop UI limits (https://www.cloudflare.com/drop/):
+ *  - index.html present
+ *  - Max individual file size 25MB
+ *  - Total file count < 2000
+ *  - Total size less than 100MB
+ */
+const MAX_FILE_BYTES = 25 * 1024 * 1024; // 25MB per file
+const MAX_TOTAL_BYTES = 100 * 1024 * 1024; // 100MB total
+const MAX_FILES = 1999; // Total file count < 2000
+
+/** Shared constraint summary for CLI JSON / agent messages */
+export const DROP_CONSTRAINTS = {
+  indexHtmlRequired: true,
+  maxIndividualFileMB: 25,
+  maxFileCount: 1999, // Drop: total file count < 2000
+  maxTotalSizeMB: 100, // Drop: total size less than 100MB
+  staticOnly: true,
+  unclaimedTtl: "~1 hour",
+  claimRequiredForPermanent: true,
+  accountRequiredForTempPreview: false,
+  source: "https://www.cloudflare.com/drop/",
+};
 
 function parseArgs(argv) {
   const args = {
@@ -845,24 +866,53 @@ function walk(dir, base = dir, files = []) {
 export function analyzeBuildDir(buildDir) {
   const files = walk(buildDir);
   if (files.length === 0) throw new Error(`Build directory is empty: ${buildDir}`);
+
+  // Drop: Total file count < 2000
   if (files.length > MAX_FILES) {
     throw new Error(
-      `Too many files (${files.length}). Drop-style previews support ~1000 assets. 请只部署 dist/ 而非整个工程。`
+      `Too many files (${files.length}). Cloudflare Drop requires total file count < 2000 ` +
+        `(max ${MAX_FILES}). 请只部署 dist/ 产物，不要整包源码或 Downloads。`
     );
   }
 
-  const totalSize = files.reduce((s, f) => s + f.size, 0);
-  if (totalSize > MAX_TOTAL) {
+  // Drop: Max individual file size 25MB
+  const oversized = files
+    .filter((f) => f.size > MAX_FILE_BYTES)
+    .sort((a, b) => b.size - a.size);
+  if (oversized.length) {
+    const list = oversized
+      .slice(0, 5)
+      .map((f) => `${f.rel} (${(f.size / 1024 / 1024).toFixed(1)}MB)`)
+      .join(", ");
     throw new Error(
-      `Total size ${(totalSize / 1024 / 1024).toFixed(1)}MB exceeds 100MB Drop limit. 请勿把 Downloads 等大目录整包上传。`
+      `File(s) exceed Cloudflare Drop max individual size 25MB: ${list}` +
+        (oversized.length > 5 ? ` …(+${oversized.length - 5} more)` : "") +
+        `。请压缩或拆分大文件后再部署。`
+    );
+  }
+
+  // Drop: Total size less than 100MB
+  const totalSize = files.reduce((s, f) => s + f.size, 0);
+  if (totalSize > MAX_TOTAL_BYTES) {
+    throw new Error(
+      `Total size ${(totalSize / 1024 / 1024).toFixed(1)}MB exceeds Cloudflare Drop limit ` +
+        `(total size < 100MB)。请勿把 Downloads 等大目录整包上传。`
+    );
+  }
+
+  // Drop: index.html present (required at site root)
+  const hasIndex = files.some(
+    (f) => f.rel === "index.html" || f.rel === "index.htm"
+  );
+  if (!hasIndex) {
+    throw new Error(
+      "Cloudflare Drop requires index.html at the site root. " +
+        "单 HTML 请用 deploy 自动暂存；多页站点请保证入口为 index.html。"
     );
   }
 
   const nonStatic = files.filter((f) => !ALLOWED_EXT.has(f.ext) && f.ext !== "");
   const warnings = [];
-  if (!files.some((f) => f.rel === "index.html" || f.rel === "index.htm")) {
-    warnings.push("No index.html at build root — preview may 404 on /");
-  }
   if (nonStatic.length) {
     warnings.push(
       `${nonStatic.length} non-typical static file(s) (e.g. ${nonStatic
@@ -897,12 +947,21 @@ export function analyzeBuildDir(buildDir) {
     );
   }
 
+  const maxFile = files.reduce(
+    (m, f) => (f.size > m.size ? f : m),
+    files[0]
+  );
+
   return {
     buildDir,
     fileCount: files.length,
     totalSize,
     totalSizeMB: +(totalSize / 1024 / 1024).toFixed(3),
-    hasIndex: files.some((f) => f.rel === "index.html" || f.rel === "index.htm"),
+    maxFileBytes: maxFile.size,
+    maxFileMB: +(maxFile.size / 1024 / 1024).toFixed(3),
+    maxFilePath: maxFile.rel,
+    hasIndex: true,
+    withinDropLimits: true,
     warnings,
     files,
   };
@@ -962,17 +1021,14 @@ function main() {
     framework: target.framework || null,
     fileCount: analysis.fileCount,
     totalSizeMB: analysis.totalSizeMB,
+    maxFileMB: analysis.maxFileMB,
+    maxFilePath: analysis.maxFilePath,
     hasIndex: analysis.hasIndex,
+    withinDropLimits: analysis.withinDropLimits,
     warnings,
     zipPath: zip?.zipPath ?? null,
     zipSize: zip?.zipSize ?? null,
-    constraints: {
-      staticOnly: true,
-      unclaimedTtl: "~1 hour",
-      maxSizeMB: 100,
-      claimRequiredForPermanent: true,
-      accountRequiredForTempPreview: false,
-    },
+    constraints: { ...DROP_CONSTRAINTS },
   };
 
   if (args.json) {
@@ -980,8 +1036,12 @@ function main() {
   } else {
     console.log(`Scenario: ${result.scenario}`);
     console.log(`Build dir: ${result.buildDir}`);
-    console.log(`Files: ${result.fileCount} (${result.totalSizeMB} MB)`);
+    console.log(`Files: ${result.fileCount} / <2000 (${result.totalSizeMB} MB / <100MB)`);
+    console.log(
+      `Largest file: ${result.maxFilePath} (${result.maxFileMB} MB / ≤25MB)`
+    );
     console.log(`index.html: ${result.hasIndex ? "yes" : "NO"}`);
+    console.log(`Drop limits: ${result.withinDropLimits ? "OK" : "FAIL"}`);
     if (result.framework) console.log(`Framework: ${result.framework}`);
     for (const w of warnings) console.log(`WARN: ${w}`);
     if (result.zipPath) console.log(`Zip: ${result.zipPath}`);

@@ -66,12 +66,20 @@ git clone https://github.com/lianyanshe-ai/sitebuilder.git ~/.grok/skills/sitebu
 本地项目 → package 校验 → deploy（Drop）→ Preview URL（~1h）→ 可选 Claim 永久保留
 ```
 
-### 硬限制（请提前告知用户）
+### Cloudflare Drop 硬限制（[官方 Drop 页](https://www.cloudflare.com/drop/) UI）
+
+| 规则 | 要求 | skill 校验 |
+|------|------|------------|
+| **index.html present** | 根目录必须有 `index.html` | 无则失败；单 HTML 会自动暂存为 index |
+| **Max individual file size** | 单文件 **≤ 25MB** | 超限失败 |
+| **Total file count** | 总文件数 **&lt; 2000** | 超限失败 |
+| **Total size** | 总包 **&lt; 100MB** | 超限失败 |
+
+其它说明：
 
 1. **仅静态资源**：HTML / CSS / JS / 图片 / 字体  
 2. **未认领预览约 1 小时**后失效  
-3. 永久保留需在有效期内 **Claim** 并登录 Cloudflare  
-4. 体积建议：总包 < 100MB，文件数约 ≤ 1000  
+3. 永久保留需在有效期内 **Claim** 并登录 Cloudflare
 
 ---
 
@@ -217,6 +225,7 @@ npx skills add lianyanshe-ai/sitebuilder -g -y
 Then ask your agent: *"Deploy ./my-landing to Cloudflare and give me the preview link."*
 
 - Primary path: package → Drop upload → `previewUrl` (~1h unclaimed)  
+- Drop limits enforced: `index.html`, per-file ≤25MB, file count &lt;2000, total &lt;100MB  
 - Optional claim for permanent retention  
 - Secondary path (only when you ask to design from scratch): style match via [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) → generate static site → deploy  
 

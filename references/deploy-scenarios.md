@@ -2,6 +2,15 @@
 
 sitebuilder 会自动识别路径类型，再决定如何打包上传。
 
+打包结果在上传前会按 [Cloudflare Drop](https://www.cloudflare.com/drop/) 硬性限制校验：
+
+| 规则 | 要求 |
+|------|------|
+| index.html present | 根目录必须有 `index.html` |
+| Max individual file size | 单文件 ≤ 25MB |
+| Total file count | 总文件数 &lt; 2000 |
+| Total size | 总包 &lt; 100MB |
+
 ## A) 单个 HTML 文件
 
 ```bash

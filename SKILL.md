@@ -10,7 +10,7 @@ description: >
 license: MIT
 metadata:
   author: sitebuilder contributors
-  version: "1.0.0"
+  version: "1.0.1"
   requires:
     node: ">=18"
 ---
@@ -53,11 +53,18 @@ metadata:
 
 ## 硬约束（部署时必须告知）
 
+来源：[Cloudflare Drop](https://www.cloudflare.com/drop/) UI，脚本在 `analyzeBuildDir` 中强制校验。
+
 1. **仅静态资源**：HTML、CSS、JavaScript、图片、字体  
-2. **未认领预览约 1 小时**后失效  
-3. **无需 Cloudflare 账号 / 无需用户提供 API** 即可临时预览  
-4. **永久保留**需在有效期内 **Claim** 并登录 Cloudflare  
-5. 体积建议：总包 &lt; 100MB；文件数约 ≤ 1000  
+2. **index.html present**：站点根必须有 `index.html`（否则 Drop 不渲染首页）  
+3. **Max individual file size 25MB**：任一文件不得超过 25MB  
+4. **Total file count &lt; 2000**：总文件数须小于 2000  
+5. **Total size less than 100MB**：总包须小于 100MB  
+6. **未认领预览约 1 小时**后失效  
+7. **无需 Cloudflare 账号 / 无需用户提供 API** 即可临时预览  
+8. **永久保留**需在有效期内 **Claim** 并登录 Cloudflare  
+
+交付话术中应顺带提醒：未 Claim ≈ 1h；需 `index.html`；体积/文件数上限如上。
 
 ---
 
@@ -253,6 +260,7 @@ node "$BASE/scripts/deploy.mjs" "$SITE" --json
 - **用户只要部署，却先聊风格 / 重做设计**（主次颠倒）  
 - 服务端项目未静态导出就 Drop  
 - 忘记提示 **1 小时 TTL**  
-- 无 `index.html` 导致预览 404  
+- 无 `index.html`（Drop 硬性要求；脚本会失败或自动暂存单 HTML）  
+- 单文件 &gt; 25MB / 总文件 ≥ 2000 / 总包 ≥ 100MB（Drop 硬限制，须在失败时说明）  
 - 把 claimUrl 当普通分享链接广而告之  
 - 从零建站时只换主色却声称完整品牌风格  

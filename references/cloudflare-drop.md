@@ -2,13 +2,27 @@
 
 ## 产品要点
 
-- **入口**: [https://cloudflare.com/drop](https://cloudflare.com/drop)
+- **入口**: [https://www.cloudflare.com/drop/](https://www.cloudflare.com/drop/)
 - **能力**: 拖入文件夹或 ZIP → 全球网络临时预览
 - **无需账号**: 可直接获得临时预览链接
 - **有效期**: 未认领预览约 **1 小时（60 分钟）**
 - **永久保留**: 在有效期内点击 **Claim**，登录或注册 Cloudflare 账号
 - **静态限制**: HTML、CSS、JavaScript、图片、字体（无服务端运行时）
-- **体积参考**: 前端校验约单文件 ≤25MB 量级、总包 ≤100MB；Workers Static Assets 临时账号约 1000 文件 / 单文件 5MiB
+
+## Drop 硬性限制（UI 明示，sitebuilder 会校验）
+
+来源：[cloudflare.com/drop](https://www.cloudflare.com/drop/) 上传区说明。
+
+| 规则 | 要求 | sitebuilder 行为 |
+|------|------|------------------|
+| **index.html present** | 站点根目录必须有 `index.html` | 无则 **硬失败**；单 HTML / 多页会自动暂存为 `index.html` |
+| **Max individual file size** | 单文件 **≤ 25MB** | 任一文件 `> 25MB` → **硬失败** |
+| **Total file count** | 总文件数 **&lt; 2000** | 文件数 `> 1999` → **硬失败** |
+| **Total size** | 总包 **&lt; 100MB** | 总大小 `> 100MB` → **硬失败** |
+
+校验入口：`scripts/package-static.mjs` → `analyzeBuildDir()`（`deploy.mjs` 部署前必跑）。
+
+> 备注：回退路径 `wrangler deploy --temporary` 底层 Workers Static Assets 可能另有更严限制（历史上约单文件 5MiB / 约 1000 文件）。默认 **drop** 方法以 Drop UI 四条为准。
 
 ## 与 Wrangler Temporary 的关系
 
